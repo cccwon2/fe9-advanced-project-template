@@ -1,5 +1,5 @@
 {
-  "name": "9-advanced-project-template",
+  "name": "fe9-advanced-project-template",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
