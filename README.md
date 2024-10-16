@@ -12,7 +12,7 @@
 - **Tailwind CSS 3.4.14**: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링을 제공합니다.
 - **NextAuth.js 4.24.8**: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리입니다.
 - **Axios 1.7.7**: HTTP 요청을 간편하게 처리할 수 있는 라이브러리입니다.
-- **Jotai 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리입니다.
+- **Jotai 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 관리에 사용됩니다.
 - **Formidable 3.5.1**: 서버 측 파일 업로드 처리를 위한 라이브러리입니다.
 
 ## 스크립트 설명
@@ -125,6 +125,10 @@
 
 이 설정은 Prettier를 기본 포매터로 사용하고, 저장 시 자동 포맷팅을 활성화합니다.
 
+## 인증 상태 관리
+
+이 프로젝트는 Jotai를 사용하여 인증 상태를 전역적으로 관리합니다. `src/store/auth.ts` 파일에서 인증 관련 atom들을 정의하고, `src/hooks/useAuth.ts`에서 이를 사용합니다.
+
 ## 소셜 로그인 설정
 
 Google 및 Kakao 소셜 로그인 설정을 위해서는 `next-auth` 라이브러리를 사용합니다. 인증을 위해 `.env` 파일에 다음과 같은 환경 변수를 설정해야 합니다:
@@ -135,10 +139,3 @@ GOOGLE_CLIENT_SECRET=your-google-client-secret
 KAKAO_CLIENT_ID=your-kakao-client-id
 KAKAO_CLIENT_SECRET=your-kakao-client-secret
 ```
-
-## 시작하기
-
-1. 저장소를 클론합니다.
-2. 의존성을 설치합니다: `npm install`
-3. 개발 서버를 실행합니다: `npm run dev`
-4. 브라우저에서 `http://localhost:3000`을 열어 결과를 확인합니다.

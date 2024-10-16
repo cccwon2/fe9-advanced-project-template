@@ -1,4 +1,4 @@
-import { User } from '@/types'
+import { User } from '@/types/auth'
 import { atom } from 'jotai'
 
 export const userAtom = atom<User | null>(null)
