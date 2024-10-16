@@ -16,10 +16,12 @@ const config: Config = {
         sans: [
           'Pretendard',
           'Lexend',
+          'Roboto',
           '-apple-system',
           'BlinkMacSystemFont',
           'system-ui',
-          '"Apple SD Gothic Neo"',
+          'Helvetica Neue',
+          'Apple SD Gothic Neo',
           'sans-serif',
         ],
       },
