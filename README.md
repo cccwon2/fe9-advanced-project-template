@@ -84,7 +84,12 @@
     ],
     "proseWrap": "preserve",
     "endOfLine": "auto",
-    "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+    "importOrder": [
+      "^@/lib/(.*)$",
+      "^@/app/(.*)$",
+      "^@/components/(.*)$",
+      "^[./]"
+    ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true
   }
