@@ -3,5 +3,5 @@ export default function Home() {
     <div>
       <h1>FE9 Advanced Project Template</h1>
     </div>
-  );
+  )
 }

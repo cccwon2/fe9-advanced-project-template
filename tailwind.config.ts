@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
@@ -9,11 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+      },
+      fontFamily: {
+        sans: [
+          'Pretendard',
+          'Lexend',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'system-ui',
+          '"Apple SD Gothic Neo"',
+          'sans-serif',
+        ],
       },
     },
   },
   plugins: [],
-};
-export default config;
+}
+
+export default config
