@@ -137,11 +137,3 @@ KAKAO_CLIENT_SECRET=your-kakao-client-secret
 2. 의존성을 설치합니다: `npm install`
 3. 개발 서버를 실행합니다: `npm run dev`
 4. 브라우저에서 `http://localhost:3000`을 열어 결과를 확인합니다.
-
-## 기여하기
-
-프로젝트에 기여하고 싶으시다면, 풀 리퀘스트를 보내주세요. 모든 기여는 환영합니다!
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 있습니다.
