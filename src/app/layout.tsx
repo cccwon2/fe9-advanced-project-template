@@ -1,6 +1,8 @@
+import { Provider } from 'jotai'
 import type { Metadata } from 'next'
 import React from 'react'
 
+import Footer from './components/Footer'
 import Header from './components/Header'
 import './globals.css'
 
@@ -17,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Header />
-        <main>{children}</main>
+        <Provider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Provider>
       </body>
     </html>
   )
