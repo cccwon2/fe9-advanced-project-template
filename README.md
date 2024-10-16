@@ -83,7 +83,7 @@
       "prettier-plugin-tailwindcss"
     ],
     "proseWrap": "preserve",
-    "endOfLine": "lf",
+    "endOfLine": "auto",
     "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true
