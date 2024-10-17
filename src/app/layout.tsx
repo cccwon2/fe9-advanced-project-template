@@ -1,20 +1,20 @@
-import { Provider } from 'jotai'
-import type { Metadata } from 'next'
-import React from 'react'
+import { Provider } from "jotai";
+import type { Metadata } from "next";
+import React from "react";
 
-import Footer from './components/Footer'
-import Header from './components/Header'
-import './globals.css'
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'FE9 Advanced Project',
-  description: 'FE9 Advanced Project Template',
-}
+  title: "FE9 Advanced Project",
+  description: "FE9 Advanced Project Template",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="ko">
@@ -26,5 +26,5 @@ export default function RootLayout({
         </Provider>
       </body>
     </html>
-  )
+  );
 }
