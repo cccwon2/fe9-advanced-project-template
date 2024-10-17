@@ -12,7 +12,7 @@
 - **Tailwind CSS 3.4.14**: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링을 제공합니다.
 - **NextAuth.js 4.24.8**: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리입니다.
 - **Axios 1.7.7**: HTTP 요청을 간편하게 처리할 수 있는 라이브러리입니다.
-- **Jotai 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 관리에 사용됩니다.
+- **Jotai 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 ��리에 사용됩니다.
 - **Formidable 3.5.1**: 서버 측 파일 업로드 처리를 위한 라이브러리입니다.
 
 ## 스크립트 설명
@@ -36,7 +36,7 @@
 - **`formidable`**: 파일 업로드 처리를 위한 서버 측 라이브러리입니다.
 - **`react-hook-form`**: 폼 관리를 위한 React 라이브러리입니다.
 - **`react-hot-toast`**: 알림 메시지를 표시하기 위한 라이브러리입니다.
-- **`react-spinners`**: 로딩 스피너 컴포넌트를 제공하는 라이브러리입니다.
+- **`react-spinners`**: 로딩 스피너 컴포넌트��� 제공하는 라이브러리입니다.
 - **`tailwind-merge`**: Tailwind CSS 클래스를 효율적으로 병합하는 유틸리티입니다.
 - **`zod`**: 스키마 선언 및 유효성 검사 라이브러리입니다.
 
@@ -56,7 +56,13 @@
     "plugins": ["@typescript-eslint", "prettier"],
     "parser": "@typescript-eslint/parser",
     "rules": {
-      "prettier/prettier": "error",
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "lf"
+        }
+      ],
+      "linebreak-style": ["error", "unix"],
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "warn"
     }
@@ -67,39 +73,130 @@
 
   ```json
   {
-    "printWidth": 80,
+    "printWidth": 120,
     "tabWidth": 2,
     "useTabs": false,
-    "semi": false,
-    "singleQuote": true,
+    "semi": true,
+    "singleQuote": false,
     "quoteProps": "as-needed",
-    "jsxSingleQuote": false,
     "trailingComma": "es5",
     "bracketSpacing": true,
-    "bracketSameLine": false,
-    "arrowParens": "avoid",
-    "plugins": [
-      "@trivago/prettier-plugin-sort-imports",
-      "prettier-plugin-tailwindcss"
-    ],
+    "arrowParens": "always",
     "proseWrap": "preserve",
-    "endOfLine": "auto",
-    "importOrder": [
-      "^@/lib/(.*)$",
-      "^@/app/(.*)$",
-      "^@/components/(.*)$",
-      "^[./]"
-    ],
+    "endOfLine": "lf",
+    "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+    "importOrder": ["^@/lib/(.*)$", "^@/app/(.*)$", "^@/components/(.*)$", "^[./]"],
     "importOrderSeparation": true,
-    "importOrderSortSpecifiers": true
+    "importOrderSortSpecifiers": true,
+    "overrides": [
+      {
+        "files": "*",
+        "options": {
+          "endOfLine": "lf"
+        }
+      }
+    ]
   }
   ```
 
-- **TypeScript**: 타입 안정성을 높이기 위해 TypeScript를 사용합니다.
-- **TailwindCSS**: CSS 프레임워크로 스타일링을 돕습니다.
-- **Husky**: Git 훅을 사용하여 커밋 전 린트 및 테스트를 실행합니다.
-- **Lint-staged**: 스테이징된 파일에 대해서만 린트를 실행합니다.
-- **Commitlint**: 커밋 메시지의 형식을 검사합니다.
+- **TypeScript**: 타입 안정성을 높이기 위해 TypeScript를 사용합니다. `tsconfig.json` 파일에 다음과 같이 구성되어 있습니다:
+
+  ```json
+  {
+    "compilerOptions": {
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "bundler",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "plugins": [
+        {
+          "name": "next"
+        }
+      ],
+      "paths": {
+        "@/*": ["./src/*"]
+      }
+    },
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "exclude": ["node_modules"]
+  }
+  ```
+
+- **TailwindCSS**: CSS 프레임워크로 스타일링을 돕습니다. `tailwind.config.ts` 파일에 다음과 같이 구성되어 있습니다:
+
+  ```typescript
+  import type { Config } from "tailwindcss";
+
+  const config: Config = {
+    content: [
+      "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+      extend: {
+        colors: {
+          background: "var(--background)",
+          foreground: "var(--foreground)",
+        },
+        fontFamily: {
+          sans: [
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "system-ui",
+            "Helvetica Neue",
+            "Apple SD Gothic Neo",
+            "sans-serif",
+          ],
+        },
+      },
+    },
+    plugins: [],
+  };
+
+  export default config;
+  ```
+
+- **Husky**: Git 훅을 사용하여 커밋 전 테스트를 실행합니다.
+- **Commitlint**: 커밋 메시지의 형식을 검사합니다. `commitlint.config.js` 파일에 다음과 같이 구성되어 있습니다:
+
+  ```javascript
+  module.exports = {
+    extends: ["@commitlint/config-conventional"],
+    parserPreset: {
+      parserOpts: {
+        headerPattern: /^\[(Feat|Fix|Build|Chore|Delete|Ci|Docs|Style|Refactor|Test)]\s(.*)$/,
+        headerCorrespondence: ["type", "subject"],
+      },
+    },
+    rules: {
+      "type-enum": [
+        2,
+        "always",
+        ["Feat", "Fix", "Build", "Chore", "Delete", "Ci", "Docs", "Style", "Refactor", "Test"],
+      ],
+      "subject-empty": [2, "never"],
+      "type-empty": [2, "never"],
+      "type-case": [0],
+    },
+  };
+  ```
+
+- **EditorConfig**: 다양한 편집기와 IDE에서 일관된 코딩 스타일을 유지하기 위해 `.editorconfig` 파일을 사용합니다:
+
+  ```
+  [*]
+  end_of_line = lf
+  ```
 
 ## VS Code 설정
 
