@@ -26,5 +26,6 @@ module.exports = {
     "subject-empty": [2, "never"], // subject가 비어있지 않도록 규칙 설정
     "type-empty": [2, "never"], // type이 비어있지 않도록 규칙 설정
     "type-case": [0], // type-case 규칙 비활성화
+    "subject-case": [0], // subject-case 규칙 비활성화
   },
 };
