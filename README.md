@@ -6,53 +6,53 @@
 
 ## 주요 기능 및 기술 스택
 
-🚀 **[Next.js](https://nextjs.org/) 14.2.15**: 서버 사이드 렌더링(SSR) 및 정적 사이트 생성(SSG)을 지원하는 React 프레임워크
+🚀 **[Next.js](https://nextjs.org/){:target="\_blank" rel="noopener noreferrer"} 14.2.15**: 서버 사이드 렌더링(SSR) 및 정적 사이트 생성(SSG)을 지원하는 React 프레임워크
 
-⚛️ **[React](https://reactjs.org/) 18**: 최신 버전의 React 라이브러리
+⚛️ **[React](https://reactjs.org/){:target="\_blank" rel="noopener noreferrer"} 18**: 최신 버전의 React 라이브러리
 
-🔷 **[TypeScript](https://www.typescriptlang.org/) 5**: 정적 타입 언어로, 코드 품질과 생산성을 높여줌
+🔷 **[TypeScript](https://www.typescriptlang.org/){:target="\_blank" rel="noopener noreferrer"} 5**: 정적 타입 언어로, 코드 품질과 생산성을 높여줌
 
-🎨 **[Tailwind CSS](https://tailwindcss.com/) 3.4.14**: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링 제공
+🎨 **[Tailwind CSS](https://tailwindcss.com/){:target="\_blank" rel="noopener noreferrer"} 3.4.14**: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링 제공
 
-🔐 **[NextAuth.js](https://next-auth.js.org/) 4.24.8**: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리
+🔐 **[NextAuth.js](https://next-auth.js.org/){:target="\_blank" rel="noopener noreferrer"} 4.24.8**: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리
 
-🌐 **[Axios](https://axios-http.com/) 1.7.7**: HTTP 요청을 간편하게 처리할 수 있는 라이브러리
+🌐 **[Axios](https://axios-http.com/){:target="\_blank" rel="noopener noreferrer"} 1.7.7**: HTTP 요청을 간편하게 처리할 수 있는 라이브러리
 
-🔄 **[Jotai](https://jotai.org/) 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 관리에 사용
+🔄 **[Jotai](https://jotai.org/){:target="\_blank" rel="noopener noreferrer"} 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 관리에 사용
 
-📁 **[Formidable](https://github.com/node-formidable/formidable) 3.5.1**: 서버 측 파일 업로드 처리를 위한 라이브러리
+📁 **[Formidable](https://github.com/node-formidable/formidable){:target="\_blank" rel="noopener noreferrer"} 3.5.1**: 서버 측 파일 업로드 처리를 위한 라이브러리
 
 ## 주요 의존성
 
-📦 **[`@hookform/resolvers`](https://github.com/react-hook-form/resolvers)**: 폼 유효성 검사를 위한 라이브러리
+📦 **[`@hookform/resolvers`](https://github.com/react-hook-form/resolvers){:target="\_blank" rel="noopener noreferrer"}**: 폼 유효성 검사를 위한 라이브러리
 
-🌐 **[`axios`](https://axios-http.com/)**: HTTP 요청 처리를 위한 클라이언트
+🌐 **[`axios`](https://axios-http.com/){:target="\_blank" rel="noopener noreferrer"}**: HTTP 요청 처리를 위한 클라이언트
 
-🍪 **[`cookie`](https://github.com/jshttp/cookie), [`js-cookie`](https://github.com/js-cookie/js-cookie)**: 쿠키를 다루기 위한 라이브러리
+🍪 **[`cookie`](https://github.com/jshttp/cookie){:target="\_blank" rel="noopener noreferrer"}, [`js-cookie`](https://github.com/js-cookie/js-cookie){:target="\_blank" rel="noopener noreferrer"}**: 쿠키를 다루기 위한 라이브러리
 
-🔀 **[`cors`](https://github.com/expressjs/cors)**: 서버 간의 리소스 공유를 관리
+🔀 **[`cors`](https://github.com/expressjs/cors){:target="\_blank" rel="noopener noreferrer"}**: 서버 간의 리소스 공유를 관리
 
-📅 **[`date-fns`](https://date-fns.org/)**: 날짜 처리를 쉽게 도와주는 라이브러리
+📅 **[`date-fns`](https://date-fns.org/){:target="\_blank" rel="noopener noreferrer"}**: 날짜 처리를 쉽게 도와주는 라이브러리
 
-📁 **[`formidable`](https://github.com/node-formidable/formidable)**: 파일 업로드 처리를 위한 서버 측 라이브러리
+📁 **[`formidable`](https://github.com/node-formidable/formidable){:target="\_blank" rel="noopener noreferrer"}**: 파일 업로드 처리를 위한 서버 측 라이브러리
 
-📝 **[`react-hook-form`](https://react-hook-form.com/)**: 폼 관리를 위한 React 라이브러리
+📝 **[`react-hook-form`](https://react-hook-form.com/){:target="\_blank" rel="noopener noreferrer"}**: 폼 관리를 위한 React 라이브러리
 
-🍞 **[`react-hot-toast`](https://react-hot-toast.com/)**: 알림 메시지를 표시하기 위한 라이브러리
+🍞 **[`react-hot-toast`](https://react-hot-toast.com/){:target="\_blank" rel="noopener noreferrer"}**: 알림 메시지를 표시하기 위한 라이브러리
 
-🔄 **[`react-spinners`](https://www.davidhu.io/react-spinners/)**: 로딩 스피너 컴포넌트를 제공하는 라이브러리
+🔄 **[`react-spinners`](https://www.davidhu.io/react-spinners/){:target="\_blank" rel="noopener noreferrer"}**: 로딩 스피너 컴포넌트를 제공하는 라이브러리
 
-🎨 **[`tailwind-merge`](https://github.com/dcastil/tailwind-merge)**: Tailwind CSS 클래스를 효율적으로 병합하는 유틸리티
+🎨 **[`tailwind-merge`](https://github.com/dcastil/tailwind-merge){:target="\_blank" rel="noopener noreferrer"}**: Tailwind CSS 클래스를 효율적으로 병합하는 유틸리티
 
-✅ **[`zod`](https://github.com/colinhacks/zod)**: 스키마 선언 및 유효성 검사 라이브러리
+✅ **[`zod`](https://github.com/colinhacks/zod){:target="\_blank" rel="noopener noreferrer"}**: 스키마 선언 및 유효성 검사 라이브러리
 
-🖱️ **[`react-beautiful-dnd`](https://github.com/atlassian/react-beautiful-dnd)**: 드래그 앤 드롭 기능을 구현하기 위한 라이브러리
+🖱️ **[`react-beautiful-dnd`](https://github.com/atlassian/react-beautiful-dnd){:target="\_blank" rel="noopener noreferrer"}**: 드래그 앤 드롭 기능을 구현하기 위한 라이브러리
 
-📅 **[`react-datepicker`](https://reactdatepicker.com/)**: 날짜 선택 컴포넌트를 제공하는 라이브러리
+📅 **[`react-datepicker`](https://reactdatepicker.com/){:target="\_blank" rel="noopener noreferrer"}**: 날짜 선택 컴포넌트를 제공하는 라이브러리
 
-🖼️ **[`react-modal`](https://github.com/reactjs/react-modal)**: 모달 창을 쉽게 구현할 수 있게 해주는 라이브러리
+🖼️ **[`react-modal`](https://github.com/reactjs/react-modal){:target="\_blank" rel="noopener noreferrer"}**: 모달 창을 쉽게 구현할 수 있게 해주는 라이브러리
 
-📄 **[`form-data`](https://github.com/form-data/form-data)**: 폼 데이터를 쉽게 생성하고 조작할 수 있는 라이브러리
+📄 **[`form-data`](https://github.com/form-data/form-data){:target="\_blank" rel="noopener noreferrer"}**: 폼 데이터를 쉽게 생성하고 조작할 수 있는 라이브러리
 
 ## 스크립트 설명
 
