@@ -12,7 +12,7 @@
 - **Tailwind CSS 3.4.14**: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링을 제공합니다.
 - **NextAuth.js 4.24.8**: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리입니다.
 - **Axios 1.7.7**: HTTP 요청을 간편하게 처리할 수 있는 라이브러리입니다.
-- **Jotai 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 ��리에 사용됩니다.
+- **Jotai 2.10.1**: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 관리에 사용됩니다.
 - **Formidable 3.5.1**: 서버 측 파일 업로드 처리를 위한 라이브러리입니다.
 
 ## 스크립트 설명
@@ -24,11 +24,11 @@
 - **`format`**: Prettier를 사용하여 코드 형식을 정리합니다.
 - **`clean`**: `.next`와 `out` 디렉터리를 삭제합니다.
 - **`prepare`**: Husky를 설치합니다.
-- **`lint-staged`**: Lint-staged를 실행합니다.
 - **`test`**: 테스트를 실행합니다 (현재는 설정되지 않음).
 
 ## 주요 의존성
 
+- **`@hookform/resolvers`**: 폼 유효성 검사를 위한 라이브러리입니다.
 - **`axios`**: HTTP 요청 처리를 위한 클라이언트입니다.
 - **`cookie`, `js-cookie`**: 쿠키를 다루기 위한 라이브러리입니다.
 - **`cors`**: 서버 간의 리소스 공유를 관리합니다.
@@ -42,32 +42,7 @@
 
 ## 개발 환경 설정
 
-- **ESLint**: 프로젝트의 코드 품질을 보장하기 위해 ESLint를 설정했습니다. `.eslintrc.json` 파일에 다음과 같이 구성되어 있습니다:
-
-  ```json
-  {
-    "extends": [
-      "next",
-      "next/core-web-vitals",
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": ["@typescript-eslint", "prettier"],
-    "parser": "@typescript-eslint/parser",
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "lf"
-        }
-      ],
-      "linebreak-style": ["error", "unix"],
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "warn"
-    }
-  }
-  ```
+- **ESLint**: 프로젝트의 코드 품질을 보장하기 위해 ESLint를 설정했습니다.
 
 - **Prettier**: 코드 스타일의 일관성을 유지하기 위해 Prettier를 사용합니다. `.prettierrc` 파일에 다음과 같이 구성되어 있습니다:
 
@@ -123,9 +98,10 @@
       ],
       "paths": {
         "@/*": ["./src/*"]
-      }
+      },
+      "types": ["./src/types/auth", "@hookform/resolvers"]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "custom.d.ts"],
     "exclude": ["node_modules"]
   }
   ```
@@ -167,64 +143,45 @@
   ```
 
 - **Husky**: Git 훅을 사용하여 커밋 전 테스트를 실행합니다.
-- **Commitlint**: 커밋 메시지의 형식을 검사합니다. `commitlint.config.js` 파일에 다음과 같이 구성되어 있습니다:
+- **Commitlint**: 커밋 메시지의 형식을 검사합니다.
 
-  ```javascript
-  module.exports = {
-    extends: ["@commitlint/config-conventional"],
-    parserPreset: {
-      parserOpts: {
-        headerPattern: /^\[(Feat|Fix|Build|Chore|Delete|Ci|Docs|Style|Refactor|Test)]\s(.*)$/,
-        headerCorrespondence: ["type", "subject"],
-      },
-    },
-    rules: {
-      "type-enum": [
-        2,
-        "always",
-        ["Feat", "Fix", "Build", "Chore", "Delete", "Ci", "Docs", "Style", "Refactor", "Test"],
-      ],
-      "subject-empty": [2, "never"],
-      "type-empty": [2, "never"],
-      "type-case": [0],
-    },
-  };
-  ```
+## Next.js 설정
 
-- **EditorConfig**: 다양한 편집기와 IDE에서 일관된 코딩 스타일을 유지하기 위해 `.editorconfig` 파일을 사용합니다:
+`next.config.mjs` 파일에서 Next.js의 설정을 관리합니다:
 
-  ```
-  [*]
-  end_of_line = lf
-  ```
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
 
-## VS Code 설정
+    return config;
+  },
+};
 
-프로젝트에는 VS Code 사용자를 위한 추천 설정이 포함되어 있습니다. `.vscode/settings.json` 파일에 다음과 같이 구성되어 있습니다:
+export default nextConfig;
+```
 
-```json
-{
-  "cSpell.words": [
-    "tailwindcss",
-    "Kakao",
-    "arrowParens",
-    "trivago",
-    "Pretendard",
-    "Lexend",
-    "Roboto",
-    "Neue",
-    "commitlint"
-  ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+이 설정은 SVG 파일을 React 컴포넌트로 가져올 수 있게 해줍니다.
+
+## SVG 타입 정의
+
+`custom.d.ts` 파일에서 SVG 파일에 대한 타입 정의를 제공합니다:
+
+```typescript
+declare module "*.svg" {
+  import React from "react";
+  const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
+  export default SVG;
 }
 ```
 
-이 설정은 Prettier를 기본 포매터로 사용하고, 저장 시 자동 포맷팅을 활성화합니다.
-
-## 인증 상태 관리
-
-이 프로젝트는 Jotai를 사용하여 인증 상태를 전역적으로 관리합니다. `src/store/auth.ts` 파일에서 인증 관련 atom들을 정의하고, `src/hooks/useAuth.ts`에서 이를 사용합니다.
+이를 통해 TypeScript 환경에서 SVG 파일을 React 컴포넌트로 사용할 수 있습니다.
 
 ## 소셜 로그인 설정
 
@@ -236,3 +193,5 @@ GOOGLE_CLIENT_SECRET=your-google-client-secret
 KAKAO_CLIENT_ID=your-kakao-client-id
 KAKAO_CLIENT_SECRET=your-kakao-client-secret
 ```
+
+이 템플��을 사용하면 최신 웹 개발 기술을 활용한 프로젝트를 빠르게 시작할 수 있습니다. 각 기술과 도구의 설정이 미리 되어 있어, 개발에 즉시 착수할 수 있습니다.

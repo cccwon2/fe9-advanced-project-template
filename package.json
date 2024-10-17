@@ -9,7 +9,6 @@
     "format": "prettier --write .",
     "clean": "rimraf .next out",
     "prepare": "husky install",
-    "lint-staged": "lint-staged",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
