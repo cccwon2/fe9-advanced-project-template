@@ -51,6 +51,8 @@
 
 📅 **[`react-datepicker`](https://reactdatepicker.com/)**: 날짜 선택 컴포넌트를 제공하는 라이브러리
 
+🎨 **[`react-icons`](https://react-icons.github.io/react-icons/)**: 다양한 아이콘 세트를 제공하는 라이브러리
+
 🖼️ **[`react-modal`](https://github.com/reactjs/react-modal)**: 모달 창을 쉽게 구현할 수 있게 해주는 라이브러리
 
 📄 **[`form-data`](https://github.com/form-data/form-data)**: 폼 데이터를 쉽게 생성하고 조작할 수 있는 라이브러리
