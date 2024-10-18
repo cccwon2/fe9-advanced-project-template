@@ -15,7 +15,7 @@
 
 <img src="https://tailwindcss.com/favicons/favicon-32x32.png" width="16" height="16"> **[Tailwind CSS](https://tailwindcss.com/)** 3.4.14: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링 제공
 
-<img src="https://next-auth.js.org/img/favicon.png" width="16" height="16"> **[NextAuth.js](https://next-auth.js.org/)** 4.24.8: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리
+<img src="https://next-auth.js.org/img/logo/logo-xs.png" width="16" height="16"> **[NextAuth.js](https://next-auth.js.org/)** 4.24.8: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리
 
 <img src="https://axios-http.com/assets/favicon.ico" width="16" height="16"> **[Axios](https://axios-http.com/)** 1.7.7: HTTP 요청을 간편하게 처리할 수 있는 라이브러리
 
