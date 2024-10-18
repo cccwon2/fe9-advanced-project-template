@@ -33,15 +33,15 @@
 
 <img src="https://github.com/expressjs.png" width="16" height="16"> **[`cors`](https://github.com/expressjs/cors)**: 서버 간의 리소스 공유를 관리
 
-<img src="https://date-fns.org/favicon-32x32.png" width="16" height="16"> **[`date-fns`](https://date-fns.org/)**: 날짜 처리를 쉽게 도와주는 라이브러리
+<img src="https://date-fns.org/static/favicon-32x32.png" width="16" height="16"> **[`date-fns`](https://date-fns.org/)**: 날짜 처리를 쉽게 도와주는 라이브러리
 
 <img src="https://github.com/node-formidable.png" width="16" height="16"> **[`formidable`](https://github.com/node-formidable/formidable)**: 파일 업로드 처리를 위한 서버 측 라이브러리
 
 <img src="https://react-hook-form.com/images/logo/react-hook-form-logo-only.png" width="16" height="16"> **[`react-hook-form`](https://react-hook-form.com/)**: 폼 관리를 위한 React 라이브러리
 
-<img src="https://react-hot-toast.com/favicon.ico" width="16" height="16"> **[`react-hot-toast`](https://react-hot-toast.com/)**: 알림 메시지를 표시하기 위한 라이브러리
+<img src="https://react-hot-toast.com/favicon.png" width="16" height="16"> **[`react-hot-toast`](https://react-hot-toast.com/)**: 알림 메시지를 표시하기 위한 라이브러리
 
-<img src="https://www.davidhu.io/react-spinners/favicon.ico" width="16" height="16"> **[`react-spinners`](https://www.davidhu.io/react-spinners/)**: 로딩 스피너 컴포넌트를 제공하는 라이브러리
+<img src="/public/images/favicons/react_spinners.png" width="16" height="16"> **[`react-spinners`](https://www.davidhu.io/react-spinners/)**: 로딩 스피너 컴포넌트를 제공하는 라이브러리
 
 <img src="https://github.com/dcastil.png" width="16" height="16"> **[`tailwind-merge`](https://github.com/dcastil/tailwind-merge)**: Tailwind CSS 클래스를 효율적으로 병합하는 유틸리티
 
@@ -49,7 +49,7 @@
 
 <img src="https://github.com/atlassian.png" width="16" height="16"> **[`react-beautiful-dnd`](https://github.com/atlassian/react-beautiful-dnd)**: 드래그 앤 드롭 기능을 구현하기 위한 라이브러리
 
-<img src="https://reactdatepicker.com/favicon.ico" width="16" height="16"> **[`react-datepicker`](https://reactdatepicker.com/)**: 날짜 선택 컴포넌트를 제공하는 라이브러리
+<img src="/public/images/favicons/react_datepicker.png" width="16" height="16"> **[`react-datepicker`](https://reactdatepicker.com/)**: 날짜 선택 컴포넌트를 제공하는 라이브러리
 
 <img src="https://react-icons.github.io/react-icons/favicon.ico" width="16" height="16"> **[`react-icons`](https://react-icons.github.io/react-icons/)**: 다양한 아이콘 세트를 제공하는 라이브러리
 
