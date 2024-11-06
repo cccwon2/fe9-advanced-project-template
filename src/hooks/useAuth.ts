@@ -1,12 +1,10 @@
-import { loadingAtom, userAtom } from "@/store/auth";
-import { useAtom } from "jotai";
+import { useAuthStore } from "@/store/authStore";
 import { useEffect } from "react";
 
 import { getUserProfile } from "@/app/api/user";
 
 export function useAuth() {
-  const [user, setUser] = useAtom(userAtom);
-  const [loading, setLoading] = useAtom(loadingAtom);
+  const { user, loading, setUser, setLoading } = useAuthStore();
 
   useEffect(() => {
     async function loadUser() {
@@ -15,6 +13,7 @@ export function useAuth() {
         setUser(userData);
       } catch (error) {
         console.error("사용자 프로필 로딩 실패:", error);
+        setUser(null);
       } finally {
         setLoading(false);
       }

@@ -1,4 +1,3 @@
-import { Provider } from "jotai";
 import type { Metadata } from "next";
 import React from "react";
 
@@ -7,7 +6,7 @@ import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FE9 Advanced Project",
+  title: "FE9 Advanced Project Template",
   description: "FE9 Advanced Project Template",
 };
 
@@ -19,11 +18,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Provider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </Provider>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
