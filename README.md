@@ -5,57 +5,46 @@
 **FE9 중급/고급 프로젝트 템플릿**은 Next.js, React, TypeScript, TailwindCSS 등 최신 기술 스택을 기반으로 한 프론트엔드 프로젝트 템플릿입니다.
 이 템플릿은 소셜 로그인 기능과 이미지 업로드 기능 등을 포함하여 중급 수준의 웹 애플리케이션 개발에 적합하도록 구성되어 있습니다.
 
-## 주요 기능 및 기술 스택
+## 주요 라이브러리
 
-<img src="https://nextjs.org/static/favicon/favicon-32x32.png" width="16" height="16"> **[Next.js](https://nextjs.org/)** 14.2.15: 서버 사이드 렌더링(SSR) 및 정적 사이트 생성(SSG)을 지원하는 React 프레임워크
+[![Next.js](https://img.shields.io/badge/Next.js-14.2.15-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.14-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 
-<img src="https://reactjs.org/favicon.ico" width="16" height="16"> **[React](https://reactjs.org/)** 18: 최신 버전의 React 라이브러리
+### 상태 관리 & 데이터 페칭
 
-<img src="https://www.typescriptlang.org/favicon-32x32.png" width="16" height="16"> **[TypeScript](https://www.typescriptlang.org/)** 5: 정적 타입 언어로, 코드 품질과 생산성을 높여줌
+[![React Query](https://img.shields.io/badge/React%20Query-5.59.19-FF4154?logo=react-query)](https://tanstack.com/query)
+[![Zustand](https://img.shields.io/badge/Zustand-5.0.1-brown)](https://github.com/pmndrs/zustand)
+[![Axios](https://img.shields.io/badge/Axios-1.7.7-5A29E4?logo=axios)](https://axios-http.com/)
 
-<img src="https://tailwindcss.com/favicons/favicon-32x32.png" width="16" height="16"> **[Tailwind CSS](https://tailwindcss.com/)** 3.4.14: 유틸리티 기반의 CSS 프레임워크로, 빠르고 효율적인 스타일링 제공
+### 폼 & 유효성 검사
 
-<img src="https://next-auth.js.org/img/logo/logo-xs.png" width="16" height="16"> **[NextAuth.js](https://next-auth.js.org/)** 4.24.8: Google과 Kakao 소셜 로그인 기능을 위한 인증 라이브러리
+[![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-7.53.0-EC5990)](https://react-hook-form.com/)
+[![Zod](https://img.shields.io/badge/Zod-3.23.8-3068B7)](https://zod.dev/)
+[![HookForm Resolvers](https://img.shields.io/badge/@hookform/resolvers-3.9.0-EC5990)](https://github.com/react-hook-form/resolvers)
 
-<img src="https://axios-http.com/assets/favicon.ico" width="16" height="16"> **[Axios](https://axios-http.com/)** 1.7.7: HTTP 요청을 간편하게 처리할 수 있는 라이브러리
+### UI 컴포넌트
 
-<img src="https://jotai.org/favicon.svg" width="16" height="16"> **[Jotai](https://jotai.org/)** 2.10.1: 간결하고 사용하기 쉬운 전역 상태 관리 라이브러리로, 인증 상태 관리에 사용
+[![Hello Pangea DnD](https://img.shields.io/badge/@hello--pangea/dnd-17.0.0-yellow)](https://github.com/hello-pangea/dnd)
+[![React DatePicker](https://img.shields.io/badge/React%20DatePicker-7.4.0-216BA5)](https://reactdatepicker.com/)
+[![React Modal](https://img.shields.io/badge/React%20Modal-3.16.1-black)](https://github.com/reactjs/react-modal)
+[![React Icons](https://img.shields.io/badge/React%20Icons-5.3.0-E91E63)](https://react-icons.github.io/)
+[![React Spinners](https://img.shields.io/badge/React%20Spinners-0.14.1-36D7B7)](https://www.davidhu.io/react-spinners/)
+[![React Hot Toast](https://img.shields.io/badge/React%20Hot%20Toast-2.4.1-FF4444)](https://react-hot-toast.com/)
 
-<img src="https://github.com/node-formidable.png" width="16" height="16"> **[Formidable](https://github.com/node-formidable/formidable)** 3.5.1: 서버 측 파일 업로드 처리를 위한 라이브러리
+### 유틸리티
 
-## 주요 의존성
+[![date-fns](https://img.shields.io/badge/date--fns-4.1.0-yellow)](https://date-fns.org/)
+[![Tailwind Merge](https://img.shields.io/badge/tailwind--merge-2.5.4-38B2AC)](https://github.com/dcastil/tailwind-merge)
+[![Form Data](https://img.shields.io/badge/form--data-4.0.1-green)](https://github.com/form-data/form-data)
 
-<img src="https://github.com/react-hook-form.png" width="16" height="16"> **[`@hookform/resolvers`](https://github.com/react-hook-form/resolvers)**: 폼 유효성 검사를 위한 라이브러리
+### 개발 도구
 
-<img src="https://axios-http.com/assets/favicon.ico" width="16" height="16"> **[`axios`](https://axios-http.com/)**: HTTP 요청 처리를 위한 클라이언트
-
-<img src="https://github.com/jshttp.png" width="16" height="16"> **[`cookie`](https://github.com/jshttp/cookie)**, **[`js-cookie`](https://github.com/js-cookie/js-cookie)**: 쿠키를 다루기 위한 라이브러리
-
-<img src="https://github.com/expressjs.png" width="16" height="16"> **[`cors`](https://github.com/expressjs/cors)**: 서버 간의 리소스 공유를 관리
-
-<img src="https://date-fns.org/static/favicon-32x32.png" width="16" height="16"> **[`date-fns`](https://date-fns.org/)**: 날짜 처리를 쉽게 도와주는 라이브러리
-
-<img src="https://github.com/node-formidable.png" width="16" height="16"> **[`formidable`](https://github.com/node-formidable/formidable)**: 파일 업로드 처리를 위한 서버 측 라이브러리
-
-<img src="https://react-hook-form.com/images/logo/react-hook-form-logo-only.png" width="16" height="16"> **[`react-hook-form`](https://react-hook-form.com/)**: 폼 관리를 위한 React 라이브러리
-
-<img src="https://react-hot-toast.com/favicon.png" width="16" height="16"> **[`react-hot-toast`](https://react-hot-toast.com/)**: 알림 메시지를 표시하기 위한 라이브러리
-
-<img src="/public/images/favicons/react_spinners.png" width="16" height="16"> **[`react-spinners`](https://www.davidhu.io/react-spinners/)**: 로딩 스피너 컴포넌트를 제공하는 라이브러리
-
-<img src="https://github.com/dcastil.png" width="16" height="16"> **[`tailwind-merge`](https://github.com/dcastil/tailwind-merge)**: Tailwind CSS 클래스를 효율적으로 병합하는 유틸리티
-
-<img src="https://github.com/colinhacks.png" width="16" height="16"> **[`zod`](https://github.com/colinhacks/zod)**: 스키마 선언 및 유효성 검사 라이브러리
-
-<img src="https://github.com/atlassian.png" width="16" height="16"> **[`react-beautiful-dnd`](https://github.com/atlassian/react-beautiful-dnd)**: 드래그 앤 드롭 기능을 구현하기 위한 라이브러리
-
-<img src="/public/images/favicons/react_datepicker.png" width="16" height="16"> **[`react-datepicker`](https://reactdatepicker.com/)**: 날짜 선택 컴포넌트를 제공하는 라이브러리
-
-<img src="https://react-icons.github.io/react-icons/favicon.ico" width="16" height="16"> **[`react-icons`](https://react-icons.github.io/react-icons/)**: 다양한 아이콘 세트를 제공하는 라이브러리
-
-<img src="https://github.com/reactjs.png" width="16" height="16"> **[`react-modal`](https://github.com/reactjs/react-modal)**: 모달 창을 쉽게 구현할 수 있게 해주는 라이브러리
-
-<img src="https://github.com/form-data.png" width="16" height="16"> **[`form-data`](https://github.com/form-data/form-data)**: 폼 데이터를 쉽게 생성하고 조작할 수 있는 라이브러리
+[![ESLint](https://img.shields.io/badge/ESLint-8.57.1-4B32C3?logo=eslint)](https://eslint.org/)
+[![Prettier](https://img.shields.io/badge/Prettier-3.3.3-F7B93E?logo=prettier)](https://prettier.io/)
+[![Husky](https://img.shields.io/badge/Husky-8.0.0-yellow?logo=git)](https://typicode.github.io/husky/)
+[![Commitlint](https://img.shields.io/badge/Commitlint-19.5.0-black?logo=commitlint)](https://commitlint.js.org/)
 
 ## 스크립트 설명
 
