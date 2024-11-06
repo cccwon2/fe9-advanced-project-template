@@ -5,7 +5,9 @@
 **FE9 중급/고급 프로젝트 템플릿**은 Next.js, React, TypeScript, TailwindCSS 등 최신 기술 스택을 기반으로 한 프론트엔드 프로젝트 템플릿입니다.
 이 템플릿은 소셜 로그인 기능과 이미지 업로드 기능 등을 포함하여 중급 수준의 웹 애플리케이션 개발에 적합하도록 구성되어 있습니다.
 
-## 주요 라이브러리
+## 기술 스택
+
+### 주요 의존성
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.15-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://reactjs.org/)
