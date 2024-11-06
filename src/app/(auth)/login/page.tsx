@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { login } from "@/lib/api/auth";
+import { login } from "@/app/api/auth";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

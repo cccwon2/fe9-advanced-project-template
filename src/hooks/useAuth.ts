@@ -2,7 +2,7 @@ import { loadingAtom, userAtom } from "@/store/auth";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 
-import { getUserProfile } from "@/lib/api/user";
+import { getUserProfile } from "@/app/api/user";
 
 export function useAuth() {
   const [user, setUser] = useAtom(userAtom);
