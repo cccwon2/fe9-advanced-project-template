@@ -20,6 +20,10 @@
 [![Zustand](https://img.shields.io/badge/Zustand-5.0.1-brown)](https://github.com/pmndrs/zustand)
 [![Axios](https://img.shields.io/badge/Axios-1.7.7-5A29E4?logo=axios)](https://axios-http.com/)
 
+### 인증
+
+[![Next Auth](https://img.shields.io/badge/NextAuth-4.24.8-000000?logo=next.js)](https://next-auth.js.org/)
+
 ### 폼 & 유효성 검사
 
 [![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-7.53.0-EC5990)](https://react-hook-form.com/)
@@ -45,37 +49,20 @@
 
 [![ESLint](https://img.shields.io/badge/ESLint-8.57.1-4B32C3?logo=eslint)](https://eslint.org/)
 [![Prettier](https://img.shields.io/badge/Prettier-3.3.3-F7B93E?logo=prettier)](https://prettier.io/)
-[![Husky](https://img.shields.io/badge/Husky-8.0.0-yellow?logo=git)](https://typicode.github.io/husky/)
-[![Commitlint](https://img.shields.io/badge/Commitlint-19.5.0-black?logo=commitlint)](https://commitlint.js.org/)
 
 ## 스크립트 설명
 
-| 스크립트  | 설명                                        |
-| --------- | ------------------------------------------- |
-| `dev`     | 개발 서버를 실행합니다.                     |
-| `build`   | 프로덕션 빌드를 생성합니다.                 |
-| `start`   | 프로덕션 빌드를 기반으로 서버를 실행합니다. |
-| `lint`    | ESLint를 사용하여 코드 스타일을 검사합니다. |
-| `format`  | Prettier를 사용하여 코드 형식을 정리합니다. |
-| `clean`   | `.next`와 `out` 디렉터리를 삭제합니다.      |
-| `prepare` | Husky를 설치합니다.                         |
-| `test`    | 테스트를 실행합니다 (현재는 설정되지 않음). |
+| 스크립트 | 설명                                        |
+| -------- | ------------------------------------------- |
+| `dev`    | 개발 서버를 실행합니다.                     |
+| `build`  | 프로덕션 빌드를 생성합니다.                 |
+| `start`  | 프로덕션 빌드를 기반으로 서버를 실행합니다. |
+| `lint`   | ESLint를 사용하여 코드 스타일을 검사합니다. |
+| `format` | Prettier를 사용하여 코드 형식을 정리합니다. |
+| `clean`  | `.next`와 `out` 디렉터리를 삭제합니다.      |
+| `test`   | 테스트를 실행합니다 (현재는 설정되지 않음). |
 
 ## 개발 환경 설정
-
-### Husky
-
-Git 훅을 사용하여 커밋 전 테스트를 실행합니다. 다음과 같이 설정되어 있습니다:
-
-```json
-"husky": {
-  "hooks": {
-    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-  }
-}
-```
-
-이 설정은 커밋 메시지가 작성될 때 commitlint를 실행하여 커밋 메시지 형식을 검사합니다.
 
 ### ESLint
 
@@ -122,7 +109,7 @@ ESLint는 JavaScript 및 TypeScript 코드의 품질을 향상시키고 일관�
   "semi": true, // 문장 끝에 세미콜론 사용
   "singleQuote": false, // 작은따옴표 대신 큰따옴표 사용
   "quoteProps": "as-needed", // 필요한 경우에만 객체 속성에 따옴표 사용
-  "trailingComma": "es5", // ES5에서 허용되는 후행 쉼표 사용
+  "trailingComma": "es5", // ES5에서 허용��는 후행 쉼표 사용
   "bracketSpacing": true, // 객체 리터럴의 중괄호 주위에 공백 추가
   "arrowParens": "always", // 화살표 함수의 매개변수에 항상 괄호 사용
   "proseWrap": "preserve", // 마크다운 등의 프로즌 래핑 보존
