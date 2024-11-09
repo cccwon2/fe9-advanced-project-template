@@ -1,8 +1,17 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
+
+// 클라이언트 사이드에서만 동적으로 로드
+const ReactQueryDevtools = dynamic(
+  () => import("@tanstack/react-query-devtools").then((mod) => mod.ReactQueryDevtools),
+  {
+    ssr: false,
+  }
+);
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -36,19 +45,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           },
         }}
       />
-      {process.env.NODE_ENV === "development" && (
-        <div>
-          <ReactQueryDevtools />
-        </div>
-      )}
+      {process.env.NODE_ENV === "development" && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   );
 }
-
-const ReactQueryDevtools = async () => {
-  if (process.env.NODE_ENV === "development") {
-    const { ReactQueryDevtools } = await import("@tanstack/react-query-devtools");
-    return <ReactQueryDevtools initialIsOpen={false} />;
-  }
-  return null;
-};
