@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 
-import Footer from "./components/Footer";
+import ClientLayout from "./clientLayout";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -19,8 +19,9 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Header />
-        <main>{children}</main>
-        <Footer />
+        <main>
+          <ClientLayout>{children}</ClientLayout>
+        </main>
       </body>
     </html>
   );
