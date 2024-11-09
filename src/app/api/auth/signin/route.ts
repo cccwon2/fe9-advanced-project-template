@@ -10,8 +10,16 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
     const response = await apiClient.post("/auth/login", { email, password });
     const { accessToken, refreshToken, user } = response.data;
 
-    if (accessToken) {
+    if (accessToken && refreshToken && user) {
       cookies().set("accessToken", accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 60 * 60 * 30, // 30분
+        path: "/",
+      });
+
+      cookies().set("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",

@@ -1,7 +1,8 @@
+import { checkAndRefreshAccessToken } from "@/utils/jwtUtils";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("accessToken");
   const { pathname } = request.nextUrl;
 
@@ -10,14 +11,18 @@ export function middleware(request: NextRequest) {
   const isPublicPage = publicPages.some((page) => pathname === page);
   const isAuthPage = ["/login", "/signup"].includes(pathname);
 
+  // 토큰 자동 갱신 처리
+  if (accessToken) {
+    // 만료 시간 2분 이하로 남은 경우 토큰 갱신 진행
+    await checkAndRefreshAccessToken(request);
+  }
+
   // API 라우트에 대한 처리
   if (pathname.startsWith("/api")) {
-    // /api/auth로 시작하는 경로는 제외
     if (pathname.startsWith("/api/auth")) {
       return NextResponse.next();
     }
 
-    // 토큰이 없는 경우 401 응답
     if (!accessToken) {
       return NextResponse.json({ message: "인증이 필요합니다." }, { status: 401 });
     }
