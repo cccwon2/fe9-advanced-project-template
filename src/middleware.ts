@@ -1,51 +1,40 @@
-import { checkAndRefreshAccessToken } from "@/utils/jwtUtils";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  const accessToken = request.cookies.get("accessToken");
-  const { pathname } = request.nextUrl;
+export function middleware(request: NextRequest) {
+  // 인증이 필요없는 공개 경로들을 정의
+  const publicPatterns = ["/signin", "/signup", "/_next", "/favicon.ico", /\.(jpg|jpeg|gif|png|svg)$/];
 
-  // 인증이 필요하지 않은 페이지 목록
-  const publicPages = ["/", "/login", "/signup"];
-  const isPublicPage = publicPages.some((page) => pathname === page);
-  const isAuthPage = ["/login", "/signup"].includes(pathname);
-
-  // 토큰 자동 갱신 처리
-  if (accessToken) {
-    // 만료 시간 2분 이하로 남은 경우 토큰 갱신 진행
-    await checkAndRefreshAccessToken(request);
-  }
-
-  // API 라우트에 대한 처리
-  if (pathname.startsWith("/api")) {
-    if (pathname.startsWith("/api/auth")) {
-      return NextResponse.next();
+  // 현재 요청된 경로가 공개 경로에 해당하는지 확인
+  const isPublicPath = publicPatterns.some((pattern) => {
+    if (typeof pattern === "string") {
+      return request.nextUrl.pathname.startsWith(pattern);
     }
+    return pattern.test(request.nextUrl.pathname);
+  });
 
-    if (!accessToken) {
-      return NextResponse.json({ message: "인증이 필요합니다." }, { status: 401 });
-    }
-  }
+  // 쿠키에서 인증 토큰 확인
+  const token = request.cookies.get("accessToken")?.value;
 
-  // 로그인된 사용자가 로그인/회원가입 페이지 접근 시 홈으로 리다이렉트
-  if (accessToken && isAuthPage) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
-  // 페이지 라우트에 대한 처리
-  if (!accessToken && !isPublicPage) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  // 로그인되지 않은 사용자가 보호된 페이지 접근 시 로그인 페이지로 리다이렉트
+  if (!isPublicPath && !token) {
+    return NextResponse.redirect(new URL("/signin", request.url));
   }
 
   return NextResponse.next();
 }
 
+// 미들웨어 적용 경로 설정
 export const config = {
   matcher: [
-    // API 라우트
-    "/api/:path*",
-    // 모든 페이지 라우트 (단, _next/static, _next/image, favicon.ico, public 폴더 제외)
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|gif|png|svg)).*)",
+    /*
+     * 다음으로 시작하는 경로를 제외한 모든 요청 경로에 매칭:
+     * - api (API 라우트)
+     * - _next/static (정적 파일)
+     * - _next/image (이미지 최적화 파일)
+     * - favicon.ico (파비콘)
+     * - public 폴더
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|public/).*)",
   ],
 };

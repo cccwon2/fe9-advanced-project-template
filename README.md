@@ -1,8 +1,8 @@
-# FE9 중급/고급 프로젝트 템플릿
+# FE9 중급 및 고급 프로젝트 템플릿
 
 ## 소개
 
-**FE9 중급/고급 프로젝트 템플릿**은 Next.js, React, TypeScript, TailwindCSS 등 최신 기술 스택을 기반으로 한 프론트엔드 프로젝트 템플릿입니다.
+**FE9 중급 및 고급 프로젝트 템플릿**은 Next.js, React, TypeScript, TailwindCSS 등 최신 기술 스택을 기반으로 한 프론트엔드 프로젝트 템플릿입니다.
 이 템플릿은 소셜 로그인 기능과 이미지 업로드 기능 등을 포함하여 중급 및 고급 수준의 웹 애플리케이션 개발에 적합하도록 구성되어 있습니다.
 
 ## 기술 스택
@@ -50,17 +50,73 @@
 [![ESLint](https://img.shields.io/badge/ESLint-8.57.1-4B32C3?logo=eslint)](https://eslint.org/)
 [![Prettier](https://img.shields.io/badge/Prettier-3.3.3-F7B93E?logo=prettier)](https://prettier.io/)
 
-## 스크립트 설명
+## 환경 설정
 
-| 스크립트 | 설명                                        |
-| -------- | ------------------------------------------- |
-| `dev`    | 개발 서버를 실행합니다.                     |
-| `build`  | 프로덕션 빌드를 생성합니다.                 |
-| `start`  | 프로덕션 빌드를 기반으로 서버를 실행합니다. |
-| `lint`   | ESLint를 사용하여 코드 스타일을 검사합니다. |
-| `format` | Prettier를 사용하여 코드 형식을 정리합니다. |
-| `clean`  | `.next`와 `out` 디렉터리를 삭제합니다.      |
-| `test`   | 테스트를 실행합니다 (현재는 설정되지 않음). |
+### 환경 변수 설정
+
+프로젝트 루트에 `.env.local` 파일을 생성하고 다음 환경 변수를 설정하세요:
+
+```env
+# API 설정
+NEXT_PUBLIC_API_URL=https://fe-project-cowokers.vercel.app
+NEXT_PUBLIC_TEAM_ID=9-2
+NEXT_PUBLIC_AUTH_SECRET=s1234c5678r90t1234
+```
+
+### 인증 미들웨어
+
+이 프로젝트는 Next.js 미들웨어를 사용하여 인증을 관리합니다. 다음 경로는 인증이 필요하지 않습니다:
+
+- `/signin` - 로그인 페이지
+- `/signup` - 회원가입 페이지
+- `/_next` - Next.js 시스템 파일
+- `/favicon.ico` - 파비콘
+- 이미지 파일 (jpg, jpeg, gif, png, svg)
+
+인증되지 않은 사용자가 보호된 경로에 접근하면 자동으로 로그인 페이지(`/signin`)로 리다이렉트됩니다.
+
+## 스크립트
+
+| 스크립트 | 설명                                     |
+| -------- | ---------------------------------------- |
+| `dev`    | 개발 서버를 실행합니다 (Next.js)         |
+| `build`  | 프로덕션 빌드를 생성합니다               |
+| `start`  | 프로덕션 서버를 실행합니다               |
+| `lint`   | ESLint로 코드를 검사합니다               |
+| `format` | Prettier로 코드 형식을 정리합니다        |
+| `clean`  | `.next`와 `out` 디렉터리를 삭제합니다    |
+| `test`   | 테스트를 실행합니다 (현재 구성되지 않음) |
+
+## 시작하기
+
+1. 저장소 클론:
+
+```bash
+git clone https://github.com/cccwon2/fe9-advanced-project-template.git
+```
+
+2. 프로젝트 디렉토리로 이동:
+
+```bash
+cd fe9-advanced-project-template
+```
+
+3. 의존성 설치:
+
+```bash
+npm install
+```
+
+4. 환경 변수 설정:
+   `.env.local` 파일을 생성하고 위의 '환경 변수 설정' 섹션에 명시된 변수들을 설정하세요.
+
+5. 개발 서버 실행:
+
+```bash
+npm run dev
+```
+
+이제 http://localhost:3000 에서 프로젝트를 확인할 수 있습니다.
 
 ## 개발 환경 설정
 
@@ -109,7 +165,7 @@ ESLint는 JavaScript 및 TypeScript 코드의 품질을 향상시키고 일관�
   "semi": true, // 문장 끝에 세미콜론 사용
   "singleQuote": false, // 작은따옴표 대신 큰따옴표 사용
   "quoteProps": "as-needed", // 필요한 경우에만 객체 속성에 따옴표 사용
-  "trailingComma": "es5", // ES5에서 허용��는 후행 쉼표 사용
+  "trailingComma": "es5", // ES5에서 허용되는 후행 쉼표 사용
   "bracketSpacing": true, // 객체 리터럴의 중괄호 주위에 공백 추가
   "arrowParens": "always", // 화살표 함수의 매개변수에 항상 괄호 사용
   "proseWrap": "preserve", // 마크다운 등의 프로즌 래핑 보존
