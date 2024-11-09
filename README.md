@@ -16,13 +16,13 @@
 
 ### 상태 관리 & 데이터 페칭
 
-[![React Query](https://img.shields.io/badge/React%20Query-5.59.19-FF4154?logo=react-query)](https://tanstack.com/query)
+[![React Query](https://img.shields.io/badge/@tanstack/react--query-5.59.19-FF4154?logo=react-query)](https://tanstack.com/query)
 [![Zustand](https://img.shields.io/badge/Zustand-5.0.1-brown)](https://github.com/pmndrs/zustand)
 [![Axios](https://img.shields.io/badge/Axios-1.7.7-5A29E4?logo=axios)](https://axios-http.com/)
 
 ### 인증
 
-[![Next Auth](https://img.shields.io/badge/NextAuth-4.24.8-000000?logo=next.js)](https://next-auth.js.org/)
+[![Next Auth](https://img.shields.io/badge/Next--Auth-4.24.8-000000?logo=next.js)](https://next-auth.js.org/)
 
 ### 폼 & 유효성 검사
 
