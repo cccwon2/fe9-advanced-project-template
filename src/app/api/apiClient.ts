@@ -1,7 +1,8 @@
+import { API_URL, TEAM_NAME } from "@/constants/config";
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: `${API_URL}/${TEAM_NAME}`,
   headers: {
     "Content-Type": "application/json",
   },

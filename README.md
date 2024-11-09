@@ -60,7 +60,6 @@
 # API 설정
 NEXT_PUBLIC_API_URL=your-api-url
 NEXT_PUBLIC_TEAM_ID=your-team-id
-NEXT_PUBLIC_AUTH_SECRET=your-secret-key
 ```
 
 ### 인증 미들웨어
