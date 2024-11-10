@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
-import apiClient from "@/app/api/apiClient";
+import apiClient from "@/lib/apiClient";
 
 export const POST = async (request: NextRequest): Promise<NextResponse> => {
   try {
