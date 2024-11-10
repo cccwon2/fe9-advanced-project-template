@@ -1,28 +1,23 @@
 "use client";
 
-import { useUserStore } from "@/store/userStore";
-import axios from "axios";
+import { useAuth } from "@/hooks/useAuth";
+import { type SigninSchema, signinSchema } from "@/zod/authSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-export default function SigninPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const setUser = useUserStore((state) => state.setUser);
+export default function LoginPage() {
+  const { login, isLoginLoading } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SigninSchema>({
+    resolver: zodResolver(signinSchema),
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("/api/auth/signin", { email, password });
-      // 로그인 성공 시 유저 정보 저장
-      setUser(response.data.user);
-
-      router.push("/");
-    } catch (error) {
-      console.error("로그인 실패:", error);
-    }
+  const onSubmit = (data: SigninSchema) => {
+    login(data);
   };
 
   return (
@@ -37,36 +32,35 @@ export default function SigninPage() {
             </Link>
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4 rounded-md shadow-sm">
             <div>
               <input
+                {...register("email")}
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
                 className="relative block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 placeholder="이메일"
               />
+              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
             </div>
             <div>
               <input
+                {...register("password")}
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
                 className="relative block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 placeholder="비밀번호"
               />
+              {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}
             </div>
           </div>
 
           <div>
             <button
               type="submit"
-              className="group relative flex w-full justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              disabled={isLoginLoading}
+              className="group relative flex w-full justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400"
             >
-              로그인
+              {isLoginLoading ? "로그인 중..." : "로그인"}
             </button>
           </div>
         </form>

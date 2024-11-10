@@ -1,26 +1,23 @@
 "use client";
 
-import axios from "axios";
+import { useAuth } from "@/hooks/useAuth";
+import { type SignupSchema, signupSchema } from "@/zod/authSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function SignupPage() {
-  const [email, setEmail] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const router = useRouter();
+  const { signup, isSignupLoading } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupSchema>({
+    resolver: zodResolver(signupSchema),
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("/api/auth/signup", { email, nickname, password });
-      console.log("회원가입 성공:", response.data);
-      router.push("/signin");
-    } catch (error) {
-      console.error("회원가입 실패:", error);
-    }
+  const onSubmit = (data: SignupSchema) => {
+    signup(data);
   };
 
   return (
@@ -30,61 +27,58 @@ export default function SignupPage() {
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">회원가입</h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             이미 계정이 있으신가요?{" "}
-            <Link href="/signin" className="font-medium text-blue-600 hover:text-blue-500">
+            <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
               로그인하기
             </Link>
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4 rounded-md shadow-sm">
             <div>
               <input
+                {...register("email")}
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
                 className="relative block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 placeholder="이메일"
               />
+              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
             </div>
             <div>
               <input
+                {...register("nickname")}
                 type="text"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-                required
                 className="relative block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 placeholder="닉네임"
               />
+              {errors.nickname && <p className="mt-1 text-sm text-red-600">{errors.nickname.message}</p>}
             </div>
             <div>
               <input
+                {...register("password")}
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
                 className="relative block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 placeholder="비밀번호"
               />
+              {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}
             </div>
             <div>
               <input
+                {...register("confirmPassword")}
                 type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
                 className="relative block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 placeholder="비밀번호 확인"
               />
+              {errors.confirmPassword && <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>}
             </div>
           </div>
 
           <div>
             <button
               type="submit"
-              className="group relative flex w-full justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              disabled={isSignupLoading}
+              className="group relative flex w-full justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400"
             >
-              회원가입
+              {isSignupLoading ? "회원가입 중..." : "회원가입"}
             </button>
           </div>
         </form>

@@ -33,7 +33,7 @@ export default function Header() {
               // 비로그인 상태 메뉴
               <>
                 <li>
-                  <Link href="/signin" className="rounded-lg px-4 py-2 text-white transition-colors hover:bg-white/10">
+                  <Link href="/login" className="rounded-lg px-4 py-2 text-white transition-colors hover:bg-white/10">
                     로그인
                   </Link>
                 </li>

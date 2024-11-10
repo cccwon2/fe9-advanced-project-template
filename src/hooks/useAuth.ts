@@ -1,3 +1,4 @@
+import { useUserStore } from "@/store/userStore";
 import { AuthResponse } from "@/types/auth";
 import { SigninSchema, SignupSchema } from "@/zod/authSchema";
 import { useMutation } from "@tanstack/react-query";
@@ -7,6 +8,7 @@ import { toast } from "react-hot-toast";
 
 export const useAuth = () => {
   const router = useRouter();
+  const setUser = useUserStore((state) => state.setUser);
 
   // 회원가입 mutation
   const signupMutation = useMutation({
@@ -24,18 +26,36 @@ export const useAuth = () => {
   });
 
   // 로그인 mutation
-  const signinMutation = useMutation({
+  const loginMutation = useMutation({
     mutationFn: async (data: SigninSchema) => {
-      const response = await axios.post<AuthResponse>("/api/auth/signin", data, { withCredentials: true });
+      const response = await axios.post<AuthResponse>("/api/auth/login", data, { withCredentials: true });
       return response.data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      setUser(data.user);
       toast.success("로그인되었습니다!");
       router.push("/");
-      router.refresh(); // 전역 상태 갱신을 위한 새로고침
+      router.refresh();
     },
     onError: (error: Error) => {
       toast.error(error.message || "로그인 중 오류가 발생했습니다.");
+    },
+  });
+
+  // 로그아웃 mutation
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      const response = await axios.post<AuthResponse>("/api/auth/logout", {}, { withCredentials: true });
+      return response.data;
+    },
+    onSuccess: () => {
+      setUser(null);
+      toast.success("로그아웃되었습니다!");
+      router.push("/login");
+      router.refresh();
+    },
+    onError: (error: Error) => {
+      toast.error(error.message || "로그아웃 중 오류가 발생했습니다.");
     },
   });
 
@@ -43,16 +63,23 @@ export const useAuth = () => {
     signupMutation.mutate(data);
   };
 
-  const signin = (data: SigninSchema) => {
-    signinMutation.mutate(data);
+  const login = (data: SigninSchema) => {
+    loginMutation.mutate(data);
+  };
+
+  const logout = () => {
+    logoutMutation.mutate();
   };
 
   return {
     signup,
-    signin,
+    login,
+    logout,
     isSignupLoading: signupMutation.isPending,
-    isSigninLoading: signinMutation.isPending,
+    isLoginLoading: loginMutation.isPending,
+    isLogoutLoading: logoutMutation.isPending,
     signupError: signupMutation.error,
-    signinError: signinMutation.error,
+    loginError: loginMutation.error,
+    logoutError: logoutMutation.error,
   };
 };
