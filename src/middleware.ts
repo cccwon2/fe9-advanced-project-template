@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   // 인증이 필요없는 공개 경로들을 정의
-  const publicPatterns = ["/signin", "/signup", "/_next", "/favicon.ico", /\.(jpg|jpeg|gif|png|svg)$/];
+  const publicPatterns = ["/", "/login", "/signup", "/_next", "/favicon.ico", /\.(jpg|jpeg|gif|png|svg)$/];
 
   // 현재 요청된 경로가 공개 경로에 해당하는지 확인
   const isPublicPath = publicPatterns.some((pattern) => {
@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
 
   // 로그인되지 않은 사용자가 보호된 페이지 접근 시 로그인 페이지로 리다이렉트
   if (!isPublicPath && !token) {
-    return NextResponse.redirect(new URL("/signin", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   return NextResponse.next();

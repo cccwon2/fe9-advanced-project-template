@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/hooks/useAuth";
-import { type SigninSchema, signinSchema } from "@/zod/authSchema";
+import { type LoginSchema, loginSchema } from "@/zod/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -12,11 +12,11 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SigninSchema>({
-    resolver: zodResolver(signinSchema),
+  } = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: SigninSchema) => {
+  const onSubmit = (data: LoginSchema) => {
     login(data);
   };
 

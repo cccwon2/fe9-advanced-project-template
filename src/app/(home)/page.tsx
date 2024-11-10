@@ -21,7 +21,7 @@ export default function Home() {
                 시작하기
               </Link>
               <Link
-                href="/signin"
+                href="/login"
                 className="rounded-lg border-2 border-white bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
               >
                 로그인

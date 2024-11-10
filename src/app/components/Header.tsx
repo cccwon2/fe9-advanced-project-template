@@ -14,7 +14,7 @@ export default function Header() {
     try {
       await axios.post("/api/auth/logout");
       setUser(null);
-      router.push("/signin");
+      router.push("/login");
     } catch (error) {
       console.error("로그아웃 실패:", error);
     }

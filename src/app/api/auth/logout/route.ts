@@ -12,5 +12,14 @@ export const POST = async () => {
     path: "/",
   });
 
+  // refreshToken 쿠키 삭제
+  response.cookies.set("refreshToken", "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    maxAge: 0,
+    path: "/",
+  });
+
   return response;
 };

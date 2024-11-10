@@ -1,6 +1,6 @@
 import { useUserStore } from "@/store/userStore";
 import { AuthResponse } from "@/types/auth";
-import { SigninSchema, SignupSchema } from "@/zod/authSchema";
+import { LoginSchema, SignupSchema } from "@/zod/authSchema";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -27,7 +27,7 @@ export const useAuth = () => {
 
   // 로그인 mutation
   const loginMutation = useMutation({
-    mutationFn: async (data: SigninSchema) => {
+    mutationFn: async (data: LoginSchema) => {
       const response = await axios.post<AuthResponse>("/api/auth/login", data, { withCredentials: true });
       return response.data;
     },
@@ -63,7 +63,7 @@ export const useAuth = () => {
     signupMutation.mutate(data);
   };
 
-  const login = (data: SigninSchema) => {
+  const login = (data: LoginSchema) => {
     loginMutation.mutate(data);
   };
 
