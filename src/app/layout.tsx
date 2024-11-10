@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 
 import ClientLayout from "./clientLayout";
+import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <Header />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

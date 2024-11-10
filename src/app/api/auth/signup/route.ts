@@ -6,7 +6,8 @@ import apiClient from "@/app/api/apiClient";
 export const POST = async (request: NextRequest): Promise<NextResponse> => {
   try {
     const { email, nickname, password } = await request.json();
-    const response = await apiClient.post("/auth/signup", { email, nickname, password });
+    const passwordConfirmation = password;
+    const response = await apiClient.post("/auth/signup", { email, nickname, password, passwordConfirmation });
     const { accessToken, refreshToken, user } = response.data;
 
     return NextResponse.json({ accessToken, refreshToken, user }, { status: 200 });
